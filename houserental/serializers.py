@@ -3,4 +3,4 @@ from .models import data
 class dataSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = data
-        fields=('photo','title','description','BHK','location','rent')
+        fields=('photo','title','description','BHK','location','city','rent')

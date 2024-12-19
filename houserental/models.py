@@ -8,8 +8,54 @@ class data(models.Model):
     photo=models.ImageField(upload_to='uploads/') 
     title=models.CharField(max_length=20)
     description=models.CharField(max_length=20)
-    BHK=models.CharField(max_length=20)
+    BHK_CHOICES = (
+        ('1','1BHK' ),
+        ('2','2BHK'),
+        ('3','3BHK'),
+        ('4','4BHK'),
+        ('5','5BHK'),
+        ('6','6BHK'),
+        ('7','7BHK'),
+    )
+    BHK=models.CharField(max_length=1, choices=BHK_CHOICES)
     location=models.CharField(max_length=20)
+    city_CHOICES = (
+    ('1', 'Ambur'),
+    ('2', 'Ariyalur'),
+    ('3', 'Chennai'),
+    ('4', 'Coimbatore'),
+    ('5', 'Cuddalore'),
+    ('6', 'Dharmapuri'),
+    ('7', 'Dindigul'),
+    ('8', 'Erode'),
+    ('9', 'Kanchipuram'),
+    ('10', 'Kanyakumari'),
+    ('11', 'Karur'),
+    ('12', 'Krishnagiri'),
+    ('13', 'Madurai'),
+    ('14', 'Nagapattinam'),
+    ('15', 'Namakkal'),
+    ('16', 'Perambalur'),
+    ('17', 'Pudukkottai'),
+    ('18', 'Ramanathapuram'),
+    ('19', 'Salem'),
+    ('20', 'Sivaganga'),
+    ('21', 'Tenkasi'),
+    ('22', 'Thanjavur'),
+    ('23', 'Theni'),
+    ('24', 'Thoothukudi'),
+    ('25', 'Tiruchirappalli'),
+    ('26', 'Tirunelveli'),
+    ('27', 'Tiruppur'),
+    ('28', 'Tiruvallur'),
+    ('29', 'Tiruvannamalai'),
+    ('30', 'Tiruvarur'),
+    ('31', 'Vellore'),
+    ('32', 'Viluppuram'),
+    ('33', 'Virudhunagar')
+       
+    )
+    city=models.CharField(max_length=20, choices=city_CHOICES)
     rent=models.CharField(max_length=20)
 
 def save(self, *args, **kwargs):
