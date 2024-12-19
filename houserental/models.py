@@ -52,11 +52,11 @@ class data(models.Model):
     ('30', 'Tiruvarur'),
     ('31', 'Vellore'),
     ('32', 'Viluppuram'),
-    ('33', 'Virudhunagar')
-       
+    ('33', 'Virudhunagar') 
     )
     city=models.CharField(max_length=20, choices=city_CHOICES)
     rent=models.CharField(max_length=20)
+    contact=models.CharField(max_length=10)
 
 def save(self, *args, **kwargs):
         # Open the uploaded image
