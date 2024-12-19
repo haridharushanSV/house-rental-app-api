@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework','houserental',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -47,7 +49,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
+CORS_ALLOW_ALL_ORIGINS=True
+CORS_ALLOWED_CREDENTIALS=True
+CORS_ALLOWED_ORGINS = ['https://localhost::8080',]
 
 ROOT_URLCONF = 'houserental.urls'
 
