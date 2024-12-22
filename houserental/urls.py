@@ -1,5 +1,5 @@
 """
-URL configuration for houserental project.
+URL configuration for weatherpredictor project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -18,12 +18,18 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from .import views
+from django.conf.urls.static import static
+from django.conf import settings
+from .views import ImageUploadView
+
 
 router=routers.DefaultRouter()
-router.register(r'data',views.dataViewSet,'data')
+router.register(r'data',views.DataViewSet,'data')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'api/', include(router.urls)), 
+    path(r'api/',include(router.urls)), 
+    path('api/upload/', ImageUploadView.as_view(), name='upload'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

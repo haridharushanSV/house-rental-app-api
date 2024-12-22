@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from pathlib import Path
+from pathlib import Path,os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +40,16 @@ INSTALLED_APPS = [
     'rest_framework','houserental',
     "corsheaders",
 ]
+MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
+
+FILE_UPLOAD_HANDLERS = [
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,9 +64,12 @@ MIDDLEWARE = [
 ]
 CORS_ALLOW_ALL_ORIGINS=True
 CORS_ALLOWED_CREDENTIALS=True
-CORS_ALLOWED_ORGINS = ['https://localhost::8080',]
+CORS_ALLOWED_ORGINS = ['https://localhost::8080',"http://127.0.0.1:8000",
+    "http://192.168.140.222:8000"]
 
 ROOT_URLCONF = 'houserental.urls'
+
+
 
 TEMPLATES = [
     {

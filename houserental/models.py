@@ -1,14 +1,18 @@
 from django.db import models
-from django.db import models
 from PIL import Image as PilImage
 from io import BytesIO
 from django.core.files.base import ContentFile
 
 class data(models.Model):
-    photo=models.ImageField(upload_to='uploads/') 
+    photo1=models.ImageField(upload_to='uploads/') 
+    photo2 = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    photo3=models.ImageField(upload_to='uploads/', blank=True, null=True) 
+    photo4=models.ImageField(upload_to='uploads/', blank=True, null=True) 
+    photo5=models.ImageField(upload_to='uploads/', blank=True, null=True) 
     title=models.CharField(max_length=20)
-    description=models.CharField(max_length=20)
+    description=models.CharField(max_length=2000)
     BHK_CHOICES = (
+        ('0' , ' '),
         ('1','1BHK' ),
         ('2','2BHK'),
         ('3','3BHK'),
@@ -18,8 +22,15 @@ class data(models.Model):
         ('7','7BHK'),
     )
     BHK=models.CharField(max_length=1, choices=BHK_CHOICES)
+    bachelor_CHOICES= (
+        ('0' , ' '),
+        ('1','YES' ),
+        ('2','NO' ),
+        )
+    bachelor=models.CharField(max_length=1, choices=bachelor_CHOICES)
     location=models.CharField(max_length=20)
     city_CHOICES = (
+    ('0' , ' '),
     ('1', 'Ambur'),
     ('2', 'Ariyalur'),
     ('3', 'Chennai'),
